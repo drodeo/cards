@@ -1,0 +1,69 @@
+<header>
+  <nav role="navigation" class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "Новости", root_path, class: 'navbar-brand' %>
+      </div>
+      <!-- Collection of nav links, forms, and other content for toggling -->
+      <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="right"><%= link_to 'Инфо', root_path %><span class="sr-only">(current)</span></li>
+          <li class="right"><%= link_to 'Redis', root_path %><span class="sr-only">(current)</span></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Тулзы
+                  <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to " Категории", root_path %><span class="sr-only">(current)</span></li>
+                  <li class="right"><%= link_to 'Облако тэгов', root_path %><span class="sr-only">(current)</span>
+                  </li>
+                  <li class="right"><%= link_to 'Каналы', root_path %><span class="sr-only">(current)</span></li>
+                  <li class="right"><%= link_to 'Добавить ленту в канал', root_path %>
+                    <span class="sr-only">(current)</span></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="right"><%= link_to 'инфодей', root_path %><span class="sr-only">(current)</span></li>
+                  <li class="right"><%= link_to 'infoday1', root_path %><span class="sr-only">(current)</span></li>
+                  <li><%= link_to "infotoday", root_path %><span class="sr-only">(current)</span></li>
+                  <li class="right"><%= link_to 'Тэги', root_path %><span class="sr-only">(current)</span></li>
+                  <li class="right"><%= link_to 'выгрузить в файл', root_path %>
+                    <span class="sr-only">(current)</span></li>
+                  <li class="right"><%= link_to 'загрузить из файла', root_path %>
+                    <span class="sr-only">(current)</span></li>
+                  <li class="right"><%= link_to 'Tagexcept -выгрузить в файл', root_path %>
+                    <span class="sr-only">(current)</span></li>
+                  <li class="right"><%= link_to 'Tagexcept -загрузить из файла', root_path %>
+                    <span class="sr-only">(current)</span></li>
+                  <li class="right"><%= link_to 'Проверка категорий', root_path %>
+                    <span class="sr-only">(current)</span></li>
+                  <li class="right"><%= link_to 'Проба', root_path %><span class="sr-only">(current)</span></li>
+                  <li class="right"><%= link_to 'Diff', root_path %><span class="sr-only">(current)</span></li>
+                </ul>
+              </li>
+            </ul>
+
+
+            <li><%= link_to current_user.email, edit_user_registration_path %></li>
+            <li class="right"><%= link_to 'Поиск', search_tags_path %><span class="sr-only">(current)</span></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Login', new_user_session_path %></li>
+          <% end %>
+        </ul>
+
+
+      </div>
+    </div>
+
+
+  </nav>
+</header>

@@ -1,0 +1,15 @@
+<%= javascript_pack_tag 'cardshow', 'data-turbolinks-track': 'reload' %>
+<%= content_tag :div,
+                id: "cards-form",
+                data: {
+                    cards: @card.to_json(except: [:created_at, :updated_at])
+                } do %>
+  <% props = {
+      card: @card
+  }.to_json
+  %>
+  <card-show :cards="cards"></card-show>
+
+<% end %>
+<%= link_to 'Edit', edit_card_path(@card) %> |
+<%= link_to 'Back', cards_path %>
