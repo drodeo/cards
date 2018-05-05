@@ -27,8 +27,5 @@
 </script>
 
 <style scoped>
- div.card {
-     height:100px;
-     min-height: 100px;
- }
+
 </style>

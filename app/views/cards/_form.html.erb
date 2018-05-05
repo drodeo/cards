@@ -21,6 +21,11 @@
     <%= form.text_area :body, id: :page_body %>
   </div>
 
+  <div class="field">
+    <%= form.label :visible %>
+    <%= form.check_box :visible, id: :visibility %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

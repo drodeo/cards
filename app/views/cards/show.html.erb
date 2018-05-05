@@ -1,4 +1,4 @@
-<%= javascript_pack_tag 'cardshow', 'data-turbolinks-track': 'reload' %>
+
 <%= content_tag :div,
                 id: "cards-form",
                 data: {
@@ -13,3 +13,4 @@
 <% end %>
 <%= link_to 'Edit', edit_card_path(@card) %> |
 <%= link_to 'Back', cards_path %>
+<%= javascript_pack_tag 'cardshow' %>

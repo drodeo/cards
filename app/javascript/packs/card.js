@@ -9,13 +9,15 @@ Vue.component('Card', Card);
 import VueMarkdown from 'vue-markdown';
 Vue.component('VueMarkdown', VueMarkdown);
 
-document.addEventListener('DOMContentLoaded', () => {
+
     let element = document.getElementById("cards-form");
     let cards = element.dataset.cards;
     let props = element.dataset;
     console.log(typeof(cards));
     console.log(props);
     console.log(JSON.parse(cards));
+    var tmp = JSON.parse(cards);
+    console.log(tmp);
 
     const app = new Vue({
         el: element,
@@ -24,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 cards: JSON.parse(cards)
             }
         },
+
         //render: h => {'<div><Notice v-for="notice in notices" v-bind:key="notice.id">{{ notice.notice}} </Notice></div>', this.hi},
         components: {
             Card,
             VueMarkdown,
           //  CardShow
         }
-    })
-})
+    });

@@ -1,76 +1,11 @@
-<%= javascript_pack_tag 'card', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'card' %>
 <%= content_tag :div,
                 id: "cards-form",
                 data: {
                     cards: @cards.to_json(except: [:created_at, :updated_at])
                 } do %>
- <% props = {
-    cards: @cards
-}.to_json
+ <% props = { cards: @cards}.to_json
 %>
   <Card :cards="cards"></Card>
 
 <% end %>
-
-
-
-
-
-<!--
-
-
-
-<div id="app" :cards="cards">
-  <b-card-group deck class="mb-3">
-    <b-card border-variant="primary"
-            header="Primary"
-            header-bg-variant="primary"
-            header-text-variant="white"
-            align="center">
-      <Card :cards="cards"></Card>
-    </b-card>
-    <b-card border-variant="secondary"
-            header="Secondary"
-            header-border-variant="secondary"
-            align="center">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </b-card>
-    <b-card border-variant="success"
-            header="Success"
-            align="center">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </b-card>
-  </b-card-group>
-  <b-card-group deck class="mb-3">
-    <b-card border-variant="info"
-            header="Info"
-            align="center">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </b-card>
-    <b-card border-variant="warning"
-            header="Warning"
-            header-bg-variant="transparent"
-            align="center">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </b-card>
-    <b-card border-variant="danger"
-            header="Danger"
-            header-border-variant="danger"
-            header-text-variant="danger"
-            align="center">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </b-card>
-  </b-card-group>
-  <b-card-group deck class="mb-3">
-    <b-card border-variant="light"
-            header="Light"
-            class="text-center">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </b-card>
-    <b-card border-variant="dark"
-            header="Dark"
-            align="center">
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </b-card>
-  </b-card-group>
-</div>-->

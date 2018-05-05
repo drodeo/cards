@@ -11,7 +11,7 @@ class CardsController < ApplicationController
   # GET /cards/1
   # GET /cards/1.json
   def show
-    @card = Card.find(params[:id])
+    #@card = Card.find(params[:id])
   end
 
   # GET /cards/new
@@ -27,7 +27,7 @@ class CardsController < ApplicationController
   # POST /cards.json
   def create
     @card = Card.new(card_params)
-
+    @card.user_id = current_user.id
     respond_to do |format|
       if @card.save
         format.html { redirect_to @card, notice: 'Card was successfully created.' }
@@ -71,6 +71,6 @@ class CardsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def card_params
-    params.require(:card).permit(:id,:title, :body)
+    params.require(:card).permit(:id,:title, :body, :user_id)
   end
 end
