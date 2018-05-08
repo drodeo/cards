@@ -25,3 +25,5 @@ production:
   pool: 5
   timeout: 5000
   database: cards
+  user: q
+  password: 321
