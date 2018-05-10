@@ -8,9 +8,14 @@ Vue.component('Card', Card);
 //Vue.component('CardShow', CardShow);
 import VueMarkdown from 'vue-markdown';
 Vue.component('VueMarkdown', VueMarkdown);
+import bCard from 'bootstrap-vue/es/components/card/card';
+
+Vue.component('b-card', bCard);
 
 
-    let element = document.getElementById("cards-form");
+
+
+let element = document.getElementById("cards-form");
     let cards = element.dataset.cards;
     let props = element.dataset;
     console.log(typeof(cards));
@@ -31,6 +36,6 @@ Vue.component('VueMarkdown', VueMarkdown);
         components: {
             Card,
             VueMarkdown,
-          //  CardShow
+            bCard
         }
     });

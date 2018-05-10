@@ -70,3 +70,5 @@ gem 'acts-as-taggable-on'
 gem 'font-awesome-sass', '~> 4.7'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'pg'
+gem 'ckeditor'
+gem 'pry-rails', :group => :development

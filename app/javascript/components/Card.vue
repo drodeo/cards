@@ -1,33 +1,37 @@
 <template>
 
-    <div class="card">
+    <div>
         <br>
         <div class="container">
         <div class="row" >
-            <div class="col-sm-3 " id="card" v-for="card in cards"
-                 v-bind:key="card.id " @click="gotoBodyLink">
-
+            <div class="col-sm-4 " id="card" v-for="card in cards"
+                 v-bind:key="card.id " @click="gotoBodyLink" >
+                <b-card border-variant="primary">
+<span>
+     {{ bodyCut }}
+  </span>
                     <h5 class="card-header">{{ card.title}}</h5>
                     <div class="card-body">
                         <p class="card-text"><vue-markdown> {{ card.body}} </vue-markdown></p>
+
                             <a :href="'/cards/' + card.id" class="btn btn-default">Read more...</a>
-                        <span>
-     {{ bodyCut }}
-  </span>
+
                         </div>
-                    <div class="row">
-                    <h5 class="card-footer">{{ card.title}}
-                        <div class="right">
-                        <a href="#" class="card-link"><i class="material-icons">edit</i></a>
-                        <a href="#" class="card-link"><i class="material-icons">delete</i></a>
+
+                    <h5 class="card-footer">{{ card.tag_list}}
+                        <div class="text-right">
+                        <a :href="'/cards/' + card.id+'/edit'" class="card-link"><i class="material-icons">edit</i></a>
+                        <a :href="'/cards/' + card.id+',delete'" class="card-link"><i class="material-icons">delete</i></a>
                         </div>
                     </h5>
-                    </div>
 
+                </b-card>
                 </div>
 
         </div>
+
     </div>
+
     </div>
 </template>
 
@@ -42,6 +46,8 @@
                 let total = '';
                 for(let i = 0; i < this.cards.length; i++){
                     this.cards[i].body = this.cards[i].body.length>200 ? this.cards[i].body.slice(0, 200)+'...' :this.cards[i].body;
+                    console.log(this.cards[i].body);
+                   // console.log(this.cards[i].tags);
                 }
                 return this.cards.body;
             }
@@ -66,7 +72,7 @@
 </script>
 
 <style scoped>
-    .card {
+/*!*    .card {
         background: white;
         text-decoration: none;
         color: #444;
@@ -74,14 +80,14 @@
         display: flex;
         flex-direction: column;
         min-height: 100%;
-    }
+    }*!
 
-    /* On mouse-over, add a deeper shadow */
+    !* On mouse-over, add a deeper shadow *!
     .card:hover {
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     }
 
-    /* Add some padding inside the card container */
+    !* Add some padding inside the card container *!
     .container {
         padding: 2px 16px;
     }
@@ -89,7 +95,7 @@
         padding: 20px;
     }
 
-    /* typography */
+    !* typography *!
     .card h1 {
         font-size: 20px;
         margin: 0;
@@ -107,5 +113,5 @@
         text-transform: uppercase;
         letter-spacing: .05em;
         margin: 2em 0 0 0;
-    }
+    }*/
 </style>

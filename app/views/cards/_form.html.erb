@@ -18,12 +18,18 @@
 
   <div class="field">
     <%= form.label :body %>
-    <%= form.text_area :body, id: :page_body %>
+    <%= form.cktext_area :body, cols: 40, ckeditor: { uiColor: '#AADC6E', toolbar: 'full' } %>
+
   </div>
 
   <div class="field">
     <%= form.label :visible %>
     <%= form.check_box :visible, id: :visibility %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tags %>
+    <%= form.text_field :tag, id: :tags %>
   </div>
 
   <div class="actions">

@@ -4,7 +4,7 @@
 
                     <h5 class="card-header">{{ cards.title}}</h5>
                     <div class="card-body">
-                        <p class="card-text"><vue-markdown> {{ cards.body}}) </vue-markdown></p>
+                        <p class="card-text"><vue-markdown> {{ cards.body}} </vue-markdown></p>
 
 
                         </div>

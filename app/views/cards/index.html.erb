@@ -2,9 +2,9 @@
 <%= content_tag :div,
                 id: "cards-form",
                 data: {
-                    cards: @cards.to_json(except: [:created_at, :updated_at])
+                    cards: @cards.to_json(includes: :tag_list, except: [:created_at, :updated_at])
                 } do %>
- <% props = { cards: @cards}.to_json
+ <%# props = { cards: @cards}.to_json
 %>
   <Card :cards="cards"></Card>
 

@@ -4,7 +4,8 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.all #.to_json(:only => [:id, :title, :body] )
+    @cards = Card.visible.includes(:tags).all #.to_json(:only => [:id, :title, :body] )
+    #binding.pry
   end
 
 
@@ -28,6 +29,8 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     @card.user_id = current_user.id
+    @card.tag_list = params[:tag]
+    @card.save
     respond_to do |format|
       if @card.save
         format.html { redirect_to @card, notice: 'Card was successfully created.' }
@@ -71,6 +74,6 @@ class CardsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def card_params
-    params.require(:card).permit(:id,:title, :body, :user_id)
+    params.require(:card).permit(:id,:title, :body, :user_id, :visible, :tag_list)
   end
 end
