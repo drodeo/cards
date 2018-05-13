@@ -27,8 +27,9 @@ Vue.use(Card);
 Vue.component('Notice', Notice);
 Vue.use('Notice');*/
 import App from '../app.vue';
-
+document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('turbolinks:load', () => {
+
     const app = new Vue({
         el: '#app',
 /*        data: {
@@ -40,4 +41,5 @@ document.addEventListener('turbolinks:load', () => {
             },*/
 //
     })
+})
 });

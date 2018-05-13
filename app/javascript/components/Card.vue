@@ -3,34 +3,36 @@
     <div>
         <br>
         <div class="container">
-        <div class="row" >
-            <div class="col-sm-4 " id="card" v-for="card in cards"
-                 v-bind:key="card.id " @click="gotoBodyLink" >
-                <b-card border-variant="primary">
-<span>
-     {{ bodyCut }}
-  </span>
-                    <h5 class="card-header">{{ card.title}}</h5>
-                    <div class="card-body">
-                        <p class="card-text"><vue-markdown> {{ card.body}} </vue-markdown></p>
+            <div class="row">
+                <div class="col-sm-4 " id="card" v-for="card in cards"
+                     v-bind:key="card.id " @click="gotoBodyLink">
+                    <b-card border-variant="primary">
+                    <span> {{ bodyCut }} </span>
+                        <h6 class="card-header">{{ card.title}}</h6>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <vue-markdown> {{ card.body}}</vue-markdown>
+                            </p>
 
                             <a :href="'/cards/' + card.id" class="btn btn-default">Read more...</a>
-
+                            <div class="card-footer">
+                                <!--<div class="row">-->
+                                    <h6 class="text-left">{{ card.topic.title }}</h6>
+                                    <div class="text-right">
+                                        <a :href="'/cards/' + card.id+'/edit'" class="card-link"><i class="material-icons">edit</i></a>
+                                        <a :href="'/cards/' + card.id+',delete'" class="card-link"><i class="material-icons">delete</i></a>
+                                    </div>
+                                <!--</div>-->
+                            </div>
                         </div>
 
-                    <h5 class="card-footer">{{ card.tag_list}}
-                        <div class="text-right">
-                        <a :href="'/cards/' + card.id+'/edit'" class="card-link"><i class="material-icons">edit</i></a>
-                        <a :href="'/cards/' + card.id+',delete'" class="card-link"><i class="material-icons">delete</i></a>
-                        </div>
-                    </h5>
 
-                </b-card>
+                    </b-card>
                 </div>
 
-        </div>
+            </div>
 
-    </div>
+        </div>
 
     </div>
 </template>

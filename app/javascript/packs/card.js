@@ -15,6 +15,7 @@ Vue.component('b-card', bCard);
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
 let element = document.getElementById("cards-form");
     let cards = element.dataset.cards;
     let props = element.dataset;
@@ -38,4 +39,5 @@ let element = document.getElementById("cards-form");
             VueMarkdown,
             bCard
         }
-    });
+    })
+});

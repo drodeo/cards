@@ -4,8 +4,11 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.visible.includes(:tags).all #.to_json(:only => [:id, :title, :body] )
-    #binding.pry
+    if current_user
+      @cards = Card.where(user_id: current_user.id).or(Card.where(visible: true)).to_json(include: :topic, except: [:created_at, :updated_at]) if current_user
+    else
+      @cards = Card.visible.to_json(include: :topic, except: [:created_at, :updated_at]) #.to_json(:only => [:id, :title, :body] )
+    end
   end
 
 
@@ -29,8 +32,9 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     @card.user_id = current_user.id
-    @card.tag_list = params[:tag]
-    @card.save
+    @card.tag_list.add(params[:card][:tag_list])
+    #@card.save
+    #lo
     respond_to do |format|
       if @card.save
         format.html { redirect_to @card, notice: 'Card was successfully created.' }
@@ -45,6 +49,7 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1
   # PATCH/PUT /cards/1.json
   def update
+    @card.tag_list.add(params[:card][:tag_list])
     respond_to do |format|
       if @card.update(card_params)
         format.html { redirect_to @card, notice: 'Card was successfully updated.' }
@@ -74,6 +79,6 @@ class CardsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def card_params
-    params.require(:card).permit(:id,:title, :body, :user_id, :visible, :tag_list)
+    params.require(:card).permit(:id,:title, :body, :user_id, :visible, :tag_list, :topic_id)
   end
 end

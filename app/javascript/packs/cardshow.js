@@ -9,7 +9,7 @@ Vue.component('CardShow', CardShow);
 import VueMarkdown from 'vue-markdown';
 Vue.component('VueMarkdown', VueMarkdown);
 
-
+//document.addEventListener('DOMContentLoaded', () => {
     let element = document.getElementById("cards-form");
     let cards = element.dataset.cards;
     let props = element.dataset;
@@ -30,4 +30,5 @@ Vue.component('VueMarkdown', VueMarkdown);
             VueMarkdown,
             CardShow
         }
-    });
+    })
+//});
