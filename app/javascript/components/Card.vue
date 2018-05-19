@@ -14,13 +14,23 @@
                         </b-input-group-append>
                     </b-input-group>
                 </b-form-group>
+
             </b-col>
+                <div md="6" class="my-1">
+                <b-pagination align="right" :total-rows="cards.length"
+                              v-model="currentPage" :per-page="12">
+                </b-pagination>
+                <br>
+                </div>
             </b-row>
+
+
             <div class="row">
                 <b-card-group  class="col-md-4  mt-4" id="b-card" v-for="card in cards"
                      v-bind:key="card.id " @click="gotoBodyLink"
                                :filter="filter"
-                               @filtered="onFiltered">
+                               @filtered="onFiltered"
+                               :current-page="currentPage">
                     <b-card border-variant="primary" id="card">
                     <span> {{ bodyCut }} </span>
                         <h6 class="card-header">{{ card.title}}</h6>
@@ -46,7 +56,12 @@
                 </b-card-group>
 
             </div>
-
+            <div md="6" class="my-1">
+                <b-pagination align="right" :total-rows="cards.length"
+                              v-model="currentPage" :per-page="12">
+                </b-pagination>
+                <br>
+            </div>
         </div>
 
     </div>
@@ -61,7 +76,8 @@
         data () {
             return {
                 filter: null,
-            }
+                        currentPage: 1
+                    }
         },
         computed: {
             bodyCut: function() {

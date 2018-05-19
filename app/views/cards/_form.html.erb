@@ -28,11 +28,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :tags %>
-    <%= form.text_field :tag_list, id: :tags %>
-  </div>
-
-  <div class="field">
     <%= form.label :topic %>
     <%= form.collection_select(:topic_id, Topic.all, :id, :title) %>
   </div>

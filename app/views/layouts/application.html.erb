@@ -49,10 +49,14 @@
             <b-dropdown-item href="#">RU</b-dropdown-item>
             <b-dropdown-item href="#">FA</b-dropdown-item>
           </b-nav-item-dropdown>
+          <% if user_signed_in? %>
+            <b-nav-item href="new_user_session_path"><%= link_to "Logout", destroy_user_session_path, method: :delete %></b-nav-item>
+          <% else %>
+            <b-nav-item href="new_user_session_path"><%= link_to "Login", new_user_session_path %></b-nav-item>
+          <% end %>
 
-          <b-nav-item href="new_user_session_path"><%= link_to "Login", new_user_session_path %></b-nav-item>
+
         </b-navbar-nav>
-
       </b-collapse>
     </b-navbar>
 

@@ -29,6 +29,9 @@ Vue.use(FormInput);
 import { Button } from 'bootstrap-vue/es/components';
 
 Vue.use(Button);
+import bPagination from 'bootstrap-vue/es/components/pagination/pagination';
+
+Vue.component('b-pagination', bPagination);
 
 
 

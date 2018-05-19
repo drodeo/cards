@@ -32,7 +32,7 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     @card.user_id = current_user.id
-    @card.tag_list.add(params[:card][:tag_list])
+    #@card.tag_list.add(params[:card][:tag_list])
     #@card.save
     #lo
     respond_to do |format|
@@ -79,6 +79,6 @@ class CardsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def card_params
-    params.require(:card).permit(:id,:title, :body, :user_id, :visible, :tag, :tag_list, :topic_id)
+    params.require(:card).permit(:id,:title, :body, :user_id, :visible, :topic_id)
   end
 end
