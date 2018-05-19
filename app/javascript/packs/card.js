@@ -11,7 +11,24 @@ Vue.component('VueMarkdown', VueMarkdown);
 import bCard from 'bootstrap-vue/es/components/card/card';
 
 Vue.component('b-card', bCard);
+import bCardGroup from 'bootstrap-vue/es/components/card/card-group';
 
+Vue.component('b-card-group', bCardGroup);
+import { Layout } from 'bootstrap-vue/es/components';
+
+Vue.use(Layout);
+import { InputGroup } from 'bootstrap-vue/es/components';
+
+Vue.use(InputGroup);
+import { FormGroup } from 'bootstrap-vue/es/components';
+
+Vue.use(FormGroup);
+import { FormInput } from 'bootstrap-vue/es/components';
+
+Vue.use(FormInput);
+import { Button } from 'bootstrap-vue/es/components';
+
+Vue.use(Button);
 
 
 

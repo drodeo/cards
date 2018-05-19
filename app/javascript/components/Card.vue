@@ -1,12 +1,27 @@
 <template>
 
     <div>
+
         <br>
         <div class="container">
+            <b-row>
+            <b-col md="6" class="my-1">
+                <b-form-group horizontal label="Filter" class="mb-0">
+                    <b-input-group>
+                        <b-form-input v-model="filter" placeholder="Type to Search" />
+                        <b-input-group-append>
+                            <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
+                        </b-input-group-append>
+                    </b-input-group>
+                </b-form-group>
+            </b-col>
+            </b-row>
             <div class="row">
-                <div class="col-sm-4 " id="card" v-for="card in cards"
-                     v-bind:key="card.id " @click="gotoBodyLink">
-                    <b-card border-variant="primary">
+                <b-card-group  class="col-md-4  mt-4" id="b-card" v-for="card in cards"
+                     v-bind:key="card.id " @click="gotoBodyLink"
+                               :filter="filter"
+                               @filtered="onFiltered">
+                    <b-card border-variant="primary" id="card">
                     <span> {{ bodyCut }} </span>
                         <h6 class="card-header">{{ card.title}}</h6>
                         <div class="card-body">
@@ -16,19 +31,19 @@
 
                             <a :href="'/cards/' + card.id" class="btn btn-default">Read more...</a>
                             <div class="card-footer">
-                                <!--<div class="row">-->
+                                <b-row>
                                     <h6 class="text-left">{{ card.topic.title }}</h6>
                                     <div class="text-right">
                                         <a :href="'/cards/' + card.id+'/edit'" class="card-link"><i class="material-icons">edit</i></a>
                                         <a :href="'/cards/' + card.id+',delete'" class="card-link"><i class="material-icons">delete</i></a>
                                     </div>
-                                <!--</div>-->
+                                </b-row>
                             </div>
                         </div>
 
 
                     </b-card>
-                </div>
+                </b-card-group>
 
             </div>
 
@@ -43,6 +58,11 @@
 <script>
     export default {
         props: ['cards'],
+        data () {
+            return {
+                filter: null,
+            }
+        },
         computed: {
             bodyCut: function() {
                 let total = '';
@@ -55,6 +75,12 @@
             }
         },
         methods: {
+            onFiltered (filteredItems) {
+                // Trigger pagination to update the number of buttons/pages due to filtering
+                this.totalRows = filteredItems.length,
+                console.log(this.totalRows),
+                this.currentPage = 1
+            },
             gotoBodyLink: function (event) {
                 const evt = event.added || event.moved
                 if (evt == undefined) {
@@ -74,7 +100,7 @@
 </script>
 
 <style scoped>
-/*!*    .card {
+    .card {
         background: white;
         text-decoration: none;
         color: #444;
@@ -82,23 +108,23 @@
         display: flex;
         flex-direction: column;
         min-height: 100%;
-    }*!
+    }
 
-    !* On mouse-over, add a deeper shadow *!
+    /*!* On mouse-over, add a deeper shadow *!*/
     .card:hover {
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     }
 
-    !* Add some padding inside the card container *!
+    /*!* Add some padding inside the card container *!*/
     .container {
         padding: 2px 16px;
     }
-    .card article {
+    .row {
         padding: 20px;
     }
 
-    !* typography *!
-    .card h1 {
+    /*!* typography *!*/
+    .card h6 {
         font-size: 20px;
         margin: 0;
         color: #333;
@@ -115,5 +141,5 @@
         text-transform: uppercase;
         letter-spacing: .05em;
         margin: 2em 0 0 0;
-    }*/
+    }
 </style>
