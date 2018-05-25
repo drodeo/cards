@@ -35,22 +35,18 @@ Vue.component('b-pagination', bPagination);
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
+//document.addEventListener('DOMContentLoaded', () => {
 let element = document.getElementById("cards-form");
     let cards = element.dataset.cards;
     let props = element.dataset;
-    console.log(typeof(cards));
-    console.log(props);
-    console.log(JSON.parse(cards));
-    var tmp = JSON.parse(cards);
-    console.log(tmp);
 
     const app = new Vue({
         el: element,
-        data: function() {
-            return {
-                cards: JSON.parse(cards)
-            }
+        data:  {
+
+                cards: JSON.parse(cards),
+                filterText: ''
+
         },
 
         //render: h => {'<div><Notice v-for="notice in notices" v-bind:key="notice.id">{{ notice.notice}} </Notice></div>', this.hi},
@@ -59,5 +55,5 @@ let element = document.getElementById("cards-form");
             VueMarkdown,
             bCard
         }
-    })
+//    })
 });

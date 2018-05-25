@@ -8,9 +8,9 @@
             <b-col md="6" class="my-1">
                 <b-form-group horizontal label="Filter" class="mb-0">
                     <b-input-group>
-                        <b-form-input v-model="filter" placeholder="Type to Search" />
+                        <b-form-input v-model="filterText" placeholder="Type to Search" />
                         <b-input-group-append>
-                            <b-btn :disabled="!filter" @click="filter = ''">Clear</b-btn>
+                            <b-btn :disabled="!filterText" @click="filterText = ''">Clear</b-btn>
                         </b-input-group-append>
                     </b-input-group>
                 </b-form-group>
@@ -26,11 +26,11 @@
 
 
             <div class="row">
-                <b-card-group  class="col-md-4  mt-4" id="b-card" v-for="card in cards"
+                <b-card-group  class="col-md-4  mt-4" id="b-card" v-for="card in filteredBy"
                      v-bind:key="card.id " @click="gotoBodyLink"
-                               :filter="filter"
-                               @filtered="onFiltered"
-                               :current-page="currentPage">
+                               :filter="filterText"
+                               :current-page="currentPage"
+                               :per-page="perPage">
                     <b-card border-variant="primary" id="card">
                     <span> {{ bodyCut }} </span>
                         <h6 class="card-header">{{ card.title}}</h6>
@@ -75,7 +75,7 @@
         props: ['cards'],
         data () {
             return {
-                filter: null,
+                filterText: '',
                         currentPage: 1
                     }
         },
@@ -88,14 +88,22 @@
                    // console.log(this.cards[i].tags);
                 }
                 return this.cards.body;
-            }
+            },
+            filteredBy () {
+                return this.cards.filter((element) => {
+                    return element.title.toLowerCase().match(this.filterText) ||  element.body.toLowerCase().match(this.filterText)
+                })
+            },
+            //}
         },
         methods: {
-            onFiltered (filteredItems) {
-                // Trigger pagination to update the number of buttons/pages due to filtering
-                this.totalRows = filteredItems.length,
-                console.log(this.totalRows),
-                this.currentPage = 1
+            onFiltered () {
+
+                    return this.cards.filter((element) => {
+                        console.log(element.title);
+                        return element.title.match(filterText)
+                    })
+
             },
             gotoBodyLink: function (event) {
                 const evt = event.added || event.moved
