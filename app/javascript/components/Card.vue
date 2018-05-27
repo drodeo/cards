@@ -31,7 +31,7 @@
                                :filter="filterText"
                                :current-page="currentPage"
                                :per-page="perPage">
-                    <b-card border-variant="primary" id="card">
+                    <b-card border-variant="primary" id="card" footer-bg-variant="success">
                     <span> {{ bodyCut }} </span>
                         <h6 class="card-header">{{ card.title}}</h6>
                         <div class="card-body">
@@ -40,16 +40,21 @@
                             </p>
 
                             <a :href="'/cards/' + card.id" class="btn btn-default">Read more...</a>
+                        </div>
                             <div class="card-footer">
-                                <b-row>
-                                    <h6 class="text-left">{{ card.topic.title }}</h6>
-                                    <div class="text-right">
+                                <div class="row">
+                                    <h6>{{ card.topic.title }}</h6>
+
+                                    <b-col >
+                                    <div  class="text-right">
                                         <a :href="'/cards/' + card.id+'/edit'" class="card-link"><i class="material-icons">edit</i></a>
                                         <a :href="'/cards/' + card.id+',delete'" class="card-link"><i class="material-icons">delete</i></a>
                                     </div>
-                                </b-row>
+                                    </b-col>
+
+                                </div>
+
                             </div>
-                        </div>
 
 
                     </b-card>
@@ -58,7 +63,7 @@
             </div>
             <div md="6" class="my-1">
                 <b-pagination align="right" :total-rows="cards.length"
-                              v-model="currentPage" :per-page="12">
+                              v-model="currentPage" :per-page=12>
                 </b-pagination>
                 <br>
             </div>
@@ -69,22 +74,26 @@
 
 
 
-
 <script>
+
     export default {
         props: ['cards'],
-        data () {
+
+
+        data() {
             return {
                 filterText: '',
-                        currentPage: 1
-                    }
+                perPage: 12,
+                currentPage: 1
+            }
         },
         computed: {
+
             bodyCut: function() {
                 let total = '';
                 for(let i = 0; i < this.cards.length; i++){
                     this.cards[i].body = this.cards[i].body.length>200 ? this.cards[i].body.slice(0, 200)+'...' :this.cards[i].body;
-                    console.log(this.cards[i].body);
+                    //console.log(props);
                    // console.log(this.cards[i].tags);
                 }
                 return this.cards.body;
@@ -100,7 +109,7 @@
             onFiltered () {
 
                     return this.cards.filter((element) => {
-                        console.log(element.title);
+                       // console.log(element.title);
                         return element.title.match(filterText)
                     })
 

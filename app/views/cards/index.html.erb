@@ -2,9 +2,10 @@
 <%= content_tag :div,
                 id: "cards-form",
                 data: {
-                    cards: @cards
+                    cards: @cards,
+                    user: current_user.to_json
                 } do %>
- <%# props = { cards: @cards}.to_json
+ <% props = { user: current_user}.to_json
 %>
   <Card :cards="cards"></Card>
 

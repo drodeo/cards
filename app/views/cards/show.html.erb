@@ -11,7 +11,9 @@
   <card-show :cards="cards"></card-show>
 
 <% end %>
-<%= link_to 'Edit', edit_card_path(@card) %> |
 <%= link_to 'Back', root_path %>
-<%= link_to 'Destroy', @card, :method => :delete, :data => { :confirm => 'Are you sure?' }, class:  'btn btn-danger' %>
+<% if current_user %>
+  <%= link_to 'Edit', edit_card_path(@card) %> |
+  <%= link_to 'Destroy', @card, :method => :delete, :data => {:confirm => 'Are you sure?'}, class: 'btn btn-danger' %>
+<% end %>
 <%= javascript_pack_tag 'cardshow' %>

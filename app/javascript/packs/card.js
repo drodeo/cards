@@ -32,19 +32,25 @@ Vue.use(Button);
 import bPagination from 'bootstrap-vue/es/components/pagination/pagination';
 
 Vue.component('b-pagination', bPagination);
+Vue.component('is_login', {
+    props: ['current_user']
 
+});
 
 
 //document.addEventListener('DOMContentLoaded', () => {
 let element = document.getElementById("cards-form");
     let cards = element.dataset.cards;
+    let user = element.dataset.user;
     let props = element.dataset;
-
+    console.log(props);
+console.log(user);
     const app = new Vue({
         el: element,
         data:  {
 
                 cards: JSON.parse(cards),
+                current_user: user,
                 filterText: ''
 
         },

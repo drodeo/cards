@@ -13,9 +13,9 @@ Vue.component('VueMarkdown', VueMarkdown);
     let element = document.getElementById("cards-form");
     let cards = element.dataset.cards;
     let props = element.dataset;
-    console.log(typeof(cards));
-    console.log(props);
-    console.log(JSON.parse(cards));
+    //console.log(typeof(cards));
+    //console.log(props);
+    //console.log(JSON.parse(cards));
 
     const app = new Vue({
         el: element,
