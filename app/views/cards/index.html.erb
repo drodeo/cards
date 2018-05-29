@@ -5,9 +5,8 @@
                     cards: @cards,
                     user: current_user.to_json
                 } do %>
- <% props = { user: current_user}.to_json
-%>
-  <Card :cards="cards"></Card>
+
+  <Card :cards="cards" :current_user="current_user"></Card>
 
 <% end %>
 <%= javascript_pack_tag 'card' %>

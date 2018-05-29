@@ -32,10 +32,7 @@ Vue.use(Button);
 import bPagination from 'bootstrap-vue/es/components/pagination/pagination';
 
 Vue.component('b-pagination', bPagination);
-Vue.component('is_login', {
-    props: ['current_user']
 
-});
 
 
 //document.addEventListener('DOMContentLoaded', () => {
@@ -50,7 +47,7 @@ console.log(user);
         data:  {
 
                 cards: JSON.parse(cards),
-                current_user: user,
+                current_user: JSON.parse(user),
                 filterText: ''
 
         },

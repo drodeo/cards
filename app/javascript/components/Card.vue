@@ -17,8 +17,8 @@
 
             </b-col>
                 <div md="6" class="my-1">
-                <b-pagination align="right" :total-rows="cards.length"
-                              v-model="currentPage" :per-page="12">
+                <b-pagination align="right" :total-rows="totalRows"
+                              v-model="currentPage" :per-page="perPage">
                 </b-pagination>
                 <br>
                 </div>
@@ -28,9 +28,12 @@
             <div class="row">
                 <b-card-group  class="col-md-4  mt-4" id="b-card" v-for="card in filteredBy"
                      v-bind:key="card.id " @click="gotoBodyLink"
+                               :cards="cards"
+                               :current_user="current_user"
                                :filter="filterText"
                                :current-page="currentPage"
-                               :per-page="perPage">
+                               :per-page="perPage"
+                               @filtered="onFiltered">
                     <b-card border-variant="primary" id="card" footer-bg-variant="success">
                     <span> {{ bodyCut }} </span>
                         <h6 class="card-header">{{ card.title}}</h6>
@@ -45,12 +48,13 @@
                                 <div class="row">
                                     <h6>{{ card.topic.title }}</h6>
 
-                                    <b-col >
+<!--                                    <b-col :v-if="this.props.current_user">
+
                                     <div  class="text-right">
                                         <a :href="'/cards/' + card.id+'/edit'" class="card-link"><i class="material-icons">edit</i></a>
                                         <a :href="'/cards/' + card.id+',delete'" class="card-link"><i class="material-icons">delete</i></a>
                                     </div>
-                                    </b-col>
+                                    </b-col>-->
 
                                 </div>
 
@@ -62,8 +66,8 @@
 
             </div>
             <div md="6" class="my-1">
-                <b-pagination align="right" :total-rows="cards.length"
-                              v-model="currentPage" :per-page=12>
+                <b-pagination align="right" :total-rows="totalRows"
+                              v-model="currentPage" :per-page='perPage'>
                 </b-pagination>
                 <br>
             </div>
@@ -75,20 +79,27 @@
 
 
 <script>
-
     export default {
-        props: ['cards'],
+        props: ['cards', 'current_user'],
 
 
         data() {
             return {
+
                 filterText: '',
                 perPage: 12,
-                currentPage: 1
+                currentPage: 1,
+                totalRows: this.cards.length
             }
         },
         computed: {
-
+            user_login: function() {
+                console.log(this.current_user);
+                console.log(this.current_user == null);
+                 if (this.current_user == null) {
+                     return false
+                 } //? false :  true
+            },
             bodyCut: function() {
                 let total = '';
                 for(let i = 0; i < this.cards.length; i++){
@@ -102,20 +113,20 @@
                 return this.cards.filter((element) => {
                     return element.title.toLowerCase().match(this.filterText) ||  element.body.toLowerCase().match(this.filterText)
                 })
+                this.data.totalRows=this.cards.length
+                 console.log(this.data.totalRows);
             },
             //}
         },
         methods: {
-            onFiltered () {
-
-                    return this.cards.filter((element) => {
-                       // console.log(element.title);
-                        return element.title.match(filterText)
-                    })
-
+            onFiltered (filteredItems) {
+                // Trigger pagination to update the number of buttons/pages due to filtering
+                this.totalRows = filteredItems.length;
+                this.currentPage = 1
+                console.log(this.totalRows);
             },
             gotoBodyLink: function (event) {
-                const evt = event.added || event.moved
+                const evt = event.added || event.moved;
                 if (evt == undefined) {
                     return
                 }
@@ -133,7 +144,7 @@
 </script>
 
 <style scoped>
-    .card {
+/*    .card {
         background: white;
         text-decoration: none;
         color: #444;
@@ -143,12 +154,12 @@
         min-height: 100%;
     }
 
-    /*!* On mouse-over, add a deeper shadow *!*/
+    !*!* On mouse-over, add a deeper shadow *!*!
     .card:hover {
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     }
 
-    /*!* Add some padding inside the card container *!*/
+    !*!* Add some padding inside the card container *!*!
     .container {
         padding: 2px 16px;
     }
@@ -156,7 +167,7 @@
         padding: 20px;
     }
 
-    /*!* typography *!*/
+    !*!* typography *!*!
     .card h6 {
         font-size: 20px;
         margin: 0;
@@ -174,5 +185,5 @@
         text-transform: uppercase;
         letter-spacing: .05em;
         margin: 2em 0 0 0;
-    }
+    }*/
 </style>
