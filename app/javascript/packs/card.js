@@ -32,7 +32,9 @@ Vue.use(Button);
 import bPagination from 'bootstrap-vue/es/components/pagination/pagination';
 
 Vue.component('b-pagination', bPagination);
+import bPaginationNav from 'bootstrap-vue/es/components/pagination-nav/pagination-nav';
 
+Vue.component('b-pagination-nav', bPaginationNav);
 
 
 //document.addEventListener('DOMContentLoaded', () => {

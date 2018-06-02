@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37e14d12-1211-4a7e-bac4-13d338946aef" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/cards.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cards.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/components/Card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/components/Card.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/packs/card.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/javascript/packs/cardshow.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/cardshow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/cards/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/cards/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/cards/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/cards/show.html.erb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -49,8 +48,8 @@
       <file leaf-file-name="Card.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/javascript/components/Card.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-119">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="51">
+              <caret line="135" column="116" selection-start-line="135" selection-start-column="116" selection-end-line="135" selection-end-column="116" />
             </state>
           </provider>
         </entry>
@@ -67,8 +66,8 @@
       <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/cards/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+            <state relative-caret-position="136">
+              <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -85,8 +84,8 @@
       <file leaf-file-name="card.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/javascript/packs/card.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="34" selection-start-line="34" selection-end-line="37" selection-end-column="3" />
+            <state relative-caret-position="595">
+              <caret line="36" column="50" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -129,6 +128,7 @@
       <find>cut_summary</find>
       <find>pub</find>
       <find>filter</find>
+      <find>user</find>
     </findStrings>
     <replaceStrings>
       <replace>@card</replace>
@@ -220,7 +220,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -306,7 +305,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="NBKnowledgePane" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -366,6 +364,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="NBKnowledgePane" />
+      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -553,6 +553,15 @@
       <workItem from="1527354975800" duration="5269000" />
       <workItem from="1527363660953" duration="609000" />
       <workItem from="1527407635538" duration="4893000" />
+      <workItem from="1527600646254" duration="96000" />
+      <workItem from="1527602377013" duration="146000" />
+      <workItem from="1527604128603" duration="5719000" />
+      <workItem from="1527612679232" duration="860000" />
+      <workItem from="1527617371980" duration="3263000" />
+      <workItem from="1527628990542" duration="536000" />
+      <workItem from="1527954506392" duration="2141000" />
+      <workItem from="1527960034630" duration="2734000" />
+      <workItem from="1527965975910" duration="3429000" />
     </task>
     <task id="LOCAL-00001" summary="add pg">
       <created>1524911227486</created>
@@ -617,23 +626,30 @@
       <option name="project" value="LOCAL" />
       <updated>1527256225513</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add filter">
+      <created>1527620094761</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1527620094761</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190964000" />
+    <option name="totallyTimeSpent" value="209788000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1600" height="864" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2921493" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33011582" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.15765765" />
+      <window_info anchor="right" id="Database" order="3" weight="0.15765765" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.329235" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.329235" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3169399" />
@@ -695,13 +711,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/javascript/components/Card.vue</url>
-          <line>110</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="11" />
     </breakpoint-manager>
   </component>
@@ -1013,24 +1022,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/cards/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/javascript/packs/card.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="34" selection-start-line="34" selection-end-line="37" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -1041,10 +1036,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/cards/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascript/packs/card.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="36" column="50" selection-start-line="36" selection-start-column="50" selection-end-line="36" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/javascript/components/Card.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="51">
+          <caret line="135" column="116" selection-start-line="135" selection-start-column="116" selection-end-line="135" selection-end-column="116" />
         </state>
       </provider>
     </entry>

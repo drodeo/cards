@@ -5,35 +5,33 @@
         <br>
         <div class="container">
             <b-row>
-            <b-col md="6" class="my-1">
-                <b-form-group horizontal label="Filter" class="mb-0">
-                    <b-input-group>
-                        <b-form-input v-model="filterText" placeholder="Type to Search" />
-                        <b-input-group-append>
-                            <b-btn :disabled="!filterText" @click="filterText = ''">Clear</b-btn>
-                        </b-input-group-append>
-                    </b-input-group>
-                </b-form-group>
-
-            </b-col>
-                <div md="6" class="my-1">
-                <b-pagination align="right" :total-rows="totalRows"
-                              v-model="currentPage" :per-page="perPage">
-                </b-pagination>
-                <br>
+                <b-col md="6" class="my-1">
+                    <b-form-group horizontal label="Filter" class="mb-0">
+                        <b-input-group>
+                            <b-form-input v-model="filterText" placeholder="Type to Search"/>
+                            <b-input-group-append>
+                                <b-btn :disabled="!filterText" @click="filterText = ''">Clear</b-btn>
+                            </b-input-group-append>
+                        </b-input-group>
+                    </b-form-group>
+                </b-col>
+                <div md="6" class="col text-right">
+                    <button @click="prevPage">
+                        Previous
+                    </button>
+                    <button @click="nextPage">
+                        Next
+                    </button>
                 </div>
             </b-row>
 
 
             <div class="row">
-                <b-card-group  class="col-md-4  mt-4" id="b-card" v-for="card in filteredBy"
+                <b-card-group  class="col-md-4  mt-4" id="b-card" v-for="card in filteredBy "
                      v-bind:key="card.id " @click="gotoBodyLink"
-                               :cards="cards"
-                               :current_user="current_user"
-                               :filter="filterText"
-                               :current-page="currentPage"
-                               :per-page="perPage"
-                               @filtered="onFiltered">
+                               :filteredBy="paginatedData"
+                               :filter="filterText">
+
                     <b-card border-variant="primary" id="card" footer-bg-variant="success">
                     <span> {{ bodyCut }} </span>
                         <h6 class="card-header">{{ card.title}}</h6>
@@ -65,12 +63,7 @@
                 </b-card-group>
 
             </div>
-            <div md="6" class="my-1">
-                <b-pagination align="right" :total-rows="totalRows"
-                              v-model="currentPage" :per-page='perPage'>
-                </b-pagination>
-                <br>
-            </div>
+
         </div>
 
     </div>
@@ -81,18 +74,30 @@
 <script>
     export default {
         props: ['cards', 'current_user'],
-
-
         data() {
             return {
 
                 filterText: '',
                 perPage: 12,
                 currentPage: 1,
-                totalRows: this.cards.length
+                totalRows: this.cards.length,
+
+                pageNumber: 0  // default to page 0
+
             }
         },
         computed: {
+            paginatedData(){
+                const start = this.pageNumber * this.perPage,
+                    end = start + this.perPage;
+                return this.cards.slice(start, end);
+            },
+            pageCount(){
+                let l = this.cards.length,
+                    s = this.perPage;
+                return Math.floor(l/s);
+            },
+
             user_login: function() {
                 console.log(this.current_user);
                 console.log(this.current_user == null);
@@ -110,15 +115,29 @@
                 return this.cards.body;
             },
             filteredBy () {
-                return this.cards.filter((element) => {
+                const start = this.pageNumber * this.perPage,
+                    end = start + this.perPage;
+                //return this.cards.slice(start, end);
+                const arr = this.cards.filter((element) => {
                     return element.title.toLowerCase().match(this.filterText) ||  element.body.toLowerCase().match(this.filterText)
-                })
-                this.data.totalRows=this.cards.length
-                 console.log(this.data.totalRows);
+                });
+                if (arr.length > this.perPage) {
+                    return arr.slice(start, end);
+                }
+                return arr;
+                //this.data.totalRows=this.cards.length
+                // console.log(this.data.totalRows);
             },
             //}
         },
+
         methods: {
+            nextPage(){
+                (this.pageNumber < Math.floor(this.cards.length/this.perPage)) ? this.pageNumber++ : this.pageNumber;
+            },
+            prevPage(){
+                 (this.pageNumber == 0) ? this.pageNumber = 0 :this.pageNumber--;
+            },
             onFiltered (filteredItems) {
                 // Trigger pagination to update the number of buttons/pages due to filtering
                 this.totalRows = filteredItems.length;
