@@ -3,7 +3,7 @@
     "@rails/webpacker": "3.4",
     "bootstrap": "^4.1.0",
     "bootstrap-vue": "^2.0.0-rc.8",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "popper": "^1.0.1",
     "popper.js": "^1.14.3",
     "preload-script-webpack-plugin": "^1.0.3",
