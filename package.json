@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@rails/webpacker": "3.4",
-    "bootstrap": "^4.1.0",
+    "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.8",
     "jquery": "^3.3.1",
     "popper": "^1.0.1",
